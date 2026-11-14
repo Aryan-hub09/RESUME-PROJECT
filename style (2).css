@@ -1,0 +1,248 @@
+/* Colours and spacing: neutrals plus one accent, and the spacing scale (8px, 24px, 48px) */
+:root {
+  --bg: #EEF4F1;
+  --paper: #FFFFFF;
+  --ink: #1F2A30;
+  --muted: #4A5A62;
+  --line: #C9D8D2;
+  --accent: #2F6B6B;
+  --s1: 8px;
+  --s2: 24px;
+  --s3: 48px;
+}
+
+/* Base text: element selectors for the whole page */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+h1, h2, h3, h4 {
+  font-family: Lora, Georgia, serif;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+h1 { font-size: 2.75rem; margin: 0 0 var(--s2); }
+h2 { font-size: 1.75rem; margin: 0 0 var(--s2); }
+h3 { font-size: 1.25rem; margin: 0 0 4px; }
+h4 { font-size: 1rem; margin: var(--s1) 0 4px; }
+p {
+  margin: 0 0 var(--s1);
+  max-width: 68ch;
+}
+ul {
+  margin: var(--s1) 0 0;
+  padding-left: 1.25rem;
+  max-width: 68ch;
+}
+li { margin-bottom: var(--s1); }
+a { color: var(--accent); }
+a:hover { color: var(--ink); }
+a:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Page sections: shared width and spacing for every section */
+section,
+#resume-top {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--s3) var(--s2) 0;
+}
+
+/* Navigation bar: flexbox, sticks to the top */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding: var(--s1) var(--s2);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: Lora, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: var(--s1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: none;
+}
+.nav-links li { margin: 0; }
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s1);
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-link:hover { color: var(--accent); }
+
+/* Buttons: the only place the accent fills a shape */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--s2);
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.button-small { padding: 0 16px; }
+.button-outline {
+  background: transparent;
+  color: var(--accent);
+}
+.button-outline:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+
+/* Hero: name, one sentence, what I want, two buttons */
+#hero {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding-top: 64px;
+}
+.hero-text { flex: 1; }
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  background: var(--ink);
+  border-radius: 50%;
+  font: 600 4.5rem/1 "Source Sans 3", Arial, sans-serif;
+  color: var(--paper);
+}
+#hero .lead {
+  font-size: 1.25rem;
+  max-width: 62ch;
+}
+
+/* Cards: flat, white, thin outline, laid out with grid and flexbox */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: var(--s2);
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s2);
+}
+.card-grid.two { grid-template-columns: repeat(2, 1fr); }
+.meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.result { font-weight: 600; }
+.note { margin-top: var(--s2); }
+
+/* Education list: plain lines, no bullets */
+.plain-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Paper resume: a white A4-style sheet */
+#resume {
+  max-width: 794px;
+  margin: var(--s2) auto 0;
+  padding: 32px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+#resume h2 { font-size: 1.75rem; margin-bottom: 4px; }
+#resume h3 {
+  font-size: 1.05rem;
+  margin: var(--s2) 0 var(--s1);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+#resume ul { margin-top: 4px; }
+#resume li { margin-bottom: 4px; }
+
+/* Contact: last section, buttons with pre-filled subjects */
+#contact { padding-bottom: var(--s3); }
+
+/* Small screens: one column, static navigation bar */
+@media (max-width: 700px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  #hero { flex-direction: column; align-items: flex-start; gap: var(--s2); padding-top: var(--s3); }
+  .avatar { width: 120px; height: 120px; font-size: 3rem; }
+  .navbar { position: static; flex-wrap: wrap; gap: var(--s1); }
+  .nav-menu { order: 3; width: 100%; }
+  .nav-links { flex-wrap: wrap; }
+  .card-grid,
+  .card-grid.two { grid-template-columns: 1fr; }
+  #resume { padding: var(--s2); }
+}
+
+/* Print: show only the resume, black on white, one A4 page */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body > :not(#resume) { display: none; }
+  body { background: #fff; }
+  #resume {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+  #resume * { color: #000; }
+  #resume a { text-decoration: none; }
+  #resume h2 { font-size: 20pt; }
+  #resume h3 { font-size: 11.5pt; margin-top: 10px; border-bottom-color: #000; }
+  #resume h4 { font-size: 10pt; margin-top: 6px; }
+  #resume ul { margin-top: 2px; }
+  #resume li { margin-bottom: 2px; }
+}
